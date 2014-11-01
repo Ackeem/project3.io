@@ -1,0 +1,60 @@
+window.onload = function (){
+    
+ 	var pieces = $$('div#puzzlearea div');
+ 	for (var i = 0; i < pieces.length; i++) {
+	 		pieces[i].addClassName('puzzlepiece');
+    }
+	assemble();
+	$("shufflebutton").onclick = shuffle;
+}
+
+function shuffle(){
+
+	var pieces = $$('div#puzzlearea div');
+    
+    var num = Math.random() * (300 - 0) + 0;
+    /*if (num <= 75){
+    	return 0;
+    }else if((num>75) || (num <= 150)){
+    	return 100;
+    }else if((num>100) || (num <= 225)){
+    	return 200;
+    }else{
+    	return 300;
+    }*/
+
+    var current = pieces.length;
+    var temp;
+    var rand;
+}
+
+function assemble(){
+	var top = 0;
+	var left = 0;
+	var img_x = 0;
+	var img_y = 0;
+
+	var pieces = $$('div#puzzlearea div');
+	for (var i = 0; i < pieces.length; i++) {
+
+		pieces[i].setStyle({
+	 		top: String(top)+"px",
+	 		left: String(left)+"px",
+	        backgroundPosition: String(img_x)+"px "+String(img_y)+"px"
+	        
+	    });
+
+           
+         if ((i+1)%4 == 0){
+         	top+= 100;
+         	left =0;;
+         	img_x = 0;
+         	img_y -= 100;
+
+         }else{
+         	left+= 100;
+         	img_x-= 100;
+         }
+	 		
+	}
+}
